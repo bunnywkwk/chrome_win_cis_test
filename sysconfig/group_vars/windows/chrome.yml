@@ -1,0 +1,59 @@
+---
+# Install
+chrome_win_cis_install: true # false = harden an existing install only
+
+# Profiles
+chrome_win_cis_level_1: true
+chrome_win_cis_level_2: true
+
+# Sections (false = skip the whole section)
+# chrome_win_cis_section1: false               # Enforced Defaults
+# chrome_win_cis_section2: false               # Attack Surface Reduction
+# chrome_win_cis_section3: false               # Privacy
+# chrome_win_cis_section4: false               # Data Loss Prevention
+# chrome_win_cis_section5: false               # Forensics
+
+# Exceptions: risky CIS rules this site does not apply
+chrome_win_cis_rule_4_7: false # DNS-over-HTTPS only: no DoH server in the lab
+# chrome_win_cis_rule_2_2_3: false             # WebUSB blocked
+# chrome_win_cis_rule_2_3_3: false             # removes every extension
+# chrome_win_cis_rule_2_4_1: false             # Basic/Digest login stops
+# chrome_win_cis_rule_2_5_1: false             # extensions can't talk to local apps
+# chrome_win_cis_rule_2_12: false              # no click-through on cert errors
+# chrome_win_cis_rule_2_18: false              # local CA certs fail if OCSP/CRL is down
+# chrome_win_cis_rule_2_30: false              # injecting antivirus/DLP tools stop working
+# chrome_win_cis_rule_3_1_1: false             # logged out when Chrome closes
+# chrome_win_cis_rule_4_1_1: false             # no screen sharing (also 4.12)
+# chrome_win_cis_rule_4_3: false               # no upload / save as
+# chrome_win_cis_rule_4_4: false               # no microphone
+# chrome_win_cis_rule_4_5: false               # no camera
+
+# Removed from Chrome (chrome://policy would show "Unknown policy")
+chrome_win_cis_rule_1_10: false # CertificateTransparencyEnforcementDisabledForLegacyCas
+chrome_win_cis_rule_1_19: false # ThirdPartyBlockingEnabled
+chrome_win_cis_rule_2_3_4: false # DefaultThirdPartyStoragePartitioningSetting
+chrome_win_cis_rule_2_3_5: false # ThirdPartyStoragePartitioningBlockedForOrigins
+chrome_win_cis_rule_2_3_6: false # ExtensionManifestV2Availability
+chrome_win_cis_rule_2_7_1: false # CloudPrintProxyEnabled
+chrome_win_cis_rule_2_9_1: false # FirstPartySetsEnabled
+chrome_win_cis_rule_2_23: false # EnforceLocalAnchorConstraintsEnabled
+chrome_win_cis_rule_2_29: false # InsecureHashesInTLSHandshakesEnabled
+chrome_win_cis_rule_3_6: false # ChromeCleanupReportingEnabled
+
+# Windows only: they apply here, so they stay on (2.8.2, 2.10.1, 2.30, 3.13)
+# Google Update (2.1.1, 2.1.2): on; a VM not joined to a domain ignores them
+
+# Site values: CIS lets the organization decide (lab demo values)
+chrome_win_cis_safe_browsing_protection_level: 1 # 1.2.2: 1 or 2
+chrome_win_cis_variations: 0 # 1.9
+chrome_win_cis_password_manager_enabled: false # 2.6.1
+chrome_win_cis_remote_access_connections: false # 2.8.1
+chrome_win_cis_remote_access_client_domains: ["lab.example.com"] # 2.8.3
+chrome_win_cis_proxy_mode: direct # 2.17: direct or system
+chrome_win_cis_http_allowlist: ["intranet.lab.example.com"] # 2.27
+chrome_win_cis_clipboard_allowed_urls: ["https://app.lab.example.com"] # 4.2.3
+chrome_win_cis_clipboard_blocked_urls: ["[*.]example.org"] # 4.2.4
+chrome_win_cis_window_management_allowed_urls: ["https://app.lab.example.com"] # 4.2.7
+chrome_win_cis_window_management_blocked_urls: ["[*.]example.org"] # 4.2.8
+# chrome_win_cis_extension_allowlist: ["<extension id>"]                     # 2.3.3
+# chrome_win_cis_native_messaging_allowlist: ["<host name>"]                 # 2.5.1

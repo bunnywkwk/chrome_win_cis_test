@@ -1,0 +1,5 @@
+---
+- name: Harden Google Chrome to CIS on Windows
+  hosts: windows
+  roles:
+    - chrome_win_cis

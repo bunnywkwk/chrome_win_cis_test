@@ -1,0 +1,694 @@
+
+PLAY [Harden Google Chrome to CIS on Windows] **********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [win11]
+
+TASK [chrome_win_cis : PRELIM | AUDIT | Check ansible-core version] ************
+ok: [win11] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [chrome_win_cis : PRELIM | AUDIT | Check the target is Windows] ***********
+ok: [win11] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [chrome_win_cis : PRELIM | AUDIT | Find chrome.exe] ***********************
+ok: [win11] => (item=C:\Program Files\Google\Chrome\Application\chrome.exe)
+ok: [win11] => (item=C:\Program Files (x86)\Google\Chrome\Application\chrome.exe)
+
+TASK [chrome_win_cis : PRELIM | AUDIT | Stop when Chrome is not installed and install is off | Report] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : PRELIM | AUDIT | Stop when Chrome is not installed and install is off | End this host] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : PRELIM | AUDIT | Start the policy set] ******************
+ok: [win11]
+
+TASK [chrome_win_cis : INSTALL | Google Chrome | Install the Enterprise MSI] ***
+changed: [win11]
+
+TASK [chrome_win_cis : INSTALL | Google Chrome | Find chrome.exe again] ********
+ok: [win11] => (item=C:\Program Files\Google\Chrome\Application\chrome.exe)
+ok: [win11] => (item=C:\Program Files (x86)\Google\Chrome\Application\chrome.exe)
+
+TASK [chrome_win_cis : 1.1.1 | PATCH | Ensure 'Cross-origin HTTP Authentication prompts' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.2.1 | PATCH | Ensure 'Configure the list of domains on which Safe Browsing will not trigger warnings' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.2.2 | PATCH | Ensure 'Safe Browsing Protection Level' is set to 'Enabled: Safe Browsing is active in the standard mode.' or higher] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.3 | PATCH | Ensure 'Allow Google Cast to connect to Cast devices on all IP addresses' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.4 | PATCH | Ensure 'Allow queries to a Google time service' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.5 | PATCH | Ensure 'Allow the audio sandbox to run' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.6 | PATCH | Ensure 'Ask where to save each file before downloading' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.7 | PATCH | Ensure 'Continue running background apps when Google Chrome is closed' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.8 | PATCH | Ensure 'Control SafeSites adult content filtering' is set to 'Enabled: Filter top level sites (but not embedded iframes) for adult content'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.9 | PATCH | Ensure 'Determine the availability of variations' is set to 'Enable all variations'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.10 | PATCH | Ensure 'Disable Certificate Transparency enforcement for a list of Legacy Certificate Authorities' is set to 'Disabled'] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 1.11 | PATCH | Ensure 'Disable Certificate Transparency enforcement for a list of subjectPublicKeyInfo hashes' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.12 | PATCH | Ensure 'Disable Certificate Transparency enforcement for a list of URLs' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.13 | PATCH | Ensure 'Disable saving browser history' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.14 | PATCH | Ensure 'DNS interception checks enabled' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.15 | PATCH | Ensure 'Enable component updates in Google Chrome' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.16 | PATCH | Ensure 'Enable globally scoped HTTP auth cache' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.17 | PATCH | Ensure 'Enable online OCSP/CRL checks' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.18 | PATCH | Ensure 'Enable security warnings for command-line flags' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.19 | PATCH | Ensure 'Enable third party software injection blocking' is set to 'Enabled'] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 1.20 | PATCH | Ensure 'Enables managed extensions to use the Enterprise Hardware Platform API' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.21 | PATCH | Ensure 'Ephemeral profile' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.22 | PATCH | Ensure 'Import autofill form data from default browser on first run' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.23 | PATCH | Ensure 'Import of homepage from default browser on first run' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.24 | PATCH | Ensure 'Import search engines from default browser on first run' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.25 | PATCH | Ensure 'List of names that will bypass the HSTS policy check' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.26 | PATCH | Ensure 'Origins or hostname patterns for which restrictions on insecure origins should not apply' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.27 | PATCH | Ensure 'Suppress lookalike domain warnings on domains' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.28 | PATCH | Ensure 'Suppress the unsupported OS warning' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 1.29 | PATCH | Ensure 'URLs for which local IPs are exposed in WebRTC ICE candidates' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.1.1 | PATCH | Ensure 'Update policy override' is set to 'Enabled' with 'Always allow updates (recommended)' or 'Automatic silent updates' specified] ***
+changed: [win11]
+
+TASK [chrome_win_cis : 2.1.2 | PATCH | Ensure 'Auto-update check period override' is set to any value except '0'] ***
+changed: [win11]
+
+TASK [chrome_win_cis : 2.2.1 | PATCH | Ensure 'Control use of insecure content exceptions' is set to 'Enabled: Do not allow any site to load mixed content'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.2.2 | PATCH | Ensure 'Control use of the Web Bluetooth API' is set to 'Enabled: Do not allow any site to request access to Bluetooth devices via the Web Bluetooth API'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.2.3 | PATCH | Ensure 'Control use of the WebUSB API' is set to 'Enabled: Do not allow any site to request access to USB devices via the WebUSB API'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.2.4 | PATCH | Ensure 'Default notification setting' is set to 'Enabled: Do not allow any site to show desktop notifications'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.2.5 | PATCH | Ensure 'Allow local file access to file:// URLs on these sites in the PDF Viewer' Is Disabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.3.1 | PATCH | Ensure 'Blocks external extensions from being installed' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.3.2 | PATCH | Ensure 'Configure allowed app/extension types' is set to 'Enabled: extension, hosted_app, platform_app, theme'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.3.3 | PATCH | Ensure 'Configure extension installation blocklist' is set to 'Enabled: *'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.3.3 | PATCH | Ensure 'Configure extension installation blocklist' is set to 'Enabled: *' | ExtensionInstallAllowlist] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 2.3.4 | PATCH | Ensure 'Default third-party storage partitioning setting' Is Enabled and Blocked] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 2.3.5 | PATCH | Ensure 'Block third-party storage partitioning for these origins' Is Configured] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 2.3.6 | PATCH | Ensure 'Control Manifest v2 extension availability' Is Set to Forced Only] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 2.3.7 | PATCH | Ensure 'Control availability of extensions unpublished on the Chrome Web Store' Is Disabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.4.1 | PATCH | Ensure 'Supported authentication schemes' is set to 'Enabled: ntlm, negotiate'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.5.1 | PATCH | Ensure 'Configure native messaging blocklist' is set to 'Enabled: *'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.5.1 | PATCH | Ensure 'Configure native messaging blocklist' is set to 'Enabled: *' | NativeMessagingAllowlist] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 2.6.1 | PATCH | Ensure 'Enable saving passwords to the password manager' is Explicitly Configured] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.7.1 | PATCH | Ensure 'Enable Google Cloud Print Proxy' is set to 'Disabled'] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 2.8.1 | PATCH | Ensure 'Allow remote access connections to this machine' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.8.2 | PATCH | Ensure 'Allow remote users to interact with elevated windows in remote assistance sessions' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.8.3 | PATCH | Ensure 'Configure the required domain names for remote access clients' is set to 'Enabled'  with a domain defined] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.8.4 | PATCH | Ensure 'Enable curtaining of remote access hosts' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.8.5 | PATCH | Ensure 'Enable firewall traversal from remote access host' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.8.6 | PATCH | Ensure 'Enable or disable PIN-less authentication for remote access hosts' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.8.7 | PATCH | Ensure 'Enable the use of relay servers by the remote access host' is set to 'Disabled'.] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.9.1 | PATCH | Ensure 'Enable First-Party Sets' Is Disabled] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 2.10.1 | PATCH | Ensure 'Allow automatic sign-in to Microsoft cloud identity providers' Is Enabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.11 | PATCH | Ensure 'Allow download restrictions' is set to 'Enabled: Block malicious downloads'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.12 | PATCH | Ensure 'Allow proceeding from the SSL warning page' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.13 | PATCH | Ensure 'Disable proceeding from the Safe Browsing warning page' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.14 | PATCH | Ensure 'Require Site Isolation for every site' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.15 | PATCH | Ensure 'Force Google SafeSearch' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.16 | PATCH | Ensure 'Notify a user that a browser relaunch or device restart is recommended or required' is set to 'Enabled: Show a recurring prompt to the user indication that a relaunch is required'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.17 | PATCH | Ensure 'Proxy settings' is set to 'Enabled' and does not contain "ProxyMode": "auto_detect"] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.18 | PATCH | Ensure 'Require online OCSP/CRL checks for local trust anchors' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.19 | PATCH | Ensure 'Set the time period for update notifications' is set to 'Enabled: 86400000'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.20 | PATCH | Ensure 'Allow Web Authentication requests on sites with broken TLS certificates' Is Disabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.21 | PATCH | Ensure 'Allow reporting of domain reliability related data' Is Disabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.22 | PATCH | Ensure 'Enable TLS Encrypted ClientHello' Is Enabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.23 | PATCH | Ensure 'Determines whether the built-in certificate verifier will enforce constraints encoded into trust anchors loaded from the platform trust store' Is Enabled] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 2.24 | PATCH | Ensure 'Keep browsing data when creating enterprise profile by default' Is Enabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.25 | PATCH | Ensure 'Allow file or directory picker APIs to be called without prior user gesture' Is Disabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.26 | PATCH | Ensure 'Enable Google Search Side Panel' Is Disabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.27 | PATCH | Ensure 'Http Allowlist' Is Properly Configured] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.28 | PATCH | Ensure 'Enable automatic HTTPS upgrades' Is Enabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.29 | PATCH | Ensure 'Insecure Hashes in TLS Handshakes Enabled' Is Disabled] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 2.30 | PATCH | Ensure 'Enable Renderer App Container' Is Enabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.31 | PATCH | Ensure 'Enable strict MIME type checking for worker scripts' Is Enabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 2.32 | PATCH | Ensure 'Allow remote debugging' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.1.1 | PATCH | Ensure 'Default cookies setting' is set to 'Enabled: Keep cookies for the duration of the session'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.1.2 | PATCH | Ensure 'Default geolocation setting' is set to 'Enabled: Do not allow any site to track the users' physical location'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.2.1 | PATCH | Ensure 'Enable Google Cast' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.3 | PATCH | Ensure 'Allow websites to query for available payment methods' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.4 | PATCH | Ensure 'Block third party cookies' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.5 | PATCH | Ensure 'Browser sign in settings' is set to 'Enabled: Disabled browser sign-in'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.6 | PATCH | Ensure 'Control how Chrome Cleanup reports data to Google' is set to 'Disabled'] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 3.7 | PATCH | Ensure 'Disable synchronization of data with Google' is set to 'Enabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.8 | PATCH | Ensure 'Enable alternate error pages' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.9 | PATCH | Ensure 'Enable deleting browser and download history' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.10 | PATCH | Ensure 'Enable predict network actions` is set to 'Enabled: Do not predict actions on any network connection'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.11 | PATCH | Ensure 'Enable or disable spell checking web service' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.12 | PATCH | Ensure 'Enable reporting of usage and crash-related data' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.13 | PATCH | Ensure 'Enable Safe Browsing for trusted sources' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.14 | PATCH | Ensure 'Enable search suggestions' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.15 | PATCH | Ensure 'Enable Translate' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 3.16 | PATCH | Ensure 'Enable URL-keyed anonymized data collection' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.1.1 | PATCH | Ensure 'Allow or deny screen capture' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.2.1 | PATCH | Ensure 'Control use of the Serial API' is set to 'Enabled: Do not allow any site to request access to serial ports via the Serial API'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.2.2 | PATCH | Ensure 'Default Sensors Setting' is set to 'Enabled: Do not allow any site to access sensors'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.2.3 | PATCH | Ensure 'Allow clipboard for these sites' Is Configured] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.2.4 | PATCH | Ensure 'Block clipboard on these sites' Is Configured] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.2.5 | PATCH | Ensure 'Default clipboard setting' Is 'Enabled' to 'Deny Permissions'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.2.6 | PATCH | Ensure 'Default Window Management permissions setting' Is 'Enabled' to 'Deny Permission'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.2.7 | PATCH | Ensure 'Allow Window Management permission on these sites' Is Configured] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.2.8 | PATCH | Ensure 'Block Window Management permission on these sites' Is Configured] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.3 | PATCH | Ensure 'Allow invocation of file selection dialogs' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.4 | PATCH | Ensure 'Allow or deny audio capture' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.5 | PATCH | Ensure 'Allow or deny video capture' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.6 | PATCH | Ensure 'Allow user feedback' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.7 | PATCH | Ensure 'Controls the mode of DNS-over-HTTPS' is set to 'Enabled: DNS-over-HTTPS without insecure fallback'] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : 4.8 | PATCH | Ensure 'Enable AutoFill for addresses' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.9 | PATCH | Ensure 'Enable AutoFill for credit cards' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.10 | PATCH | Ensure 'Import saved passwords from default browser on first run' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.11 | PATCH | Ensure 'List of types that should be excluded from synchronization' is set to 'Enabled: passwords'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 4.12 | PATCH | Ensure 'Allow or deny screen capture' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 5.1 | PATCH | Ensure 'Enable guest mode in browser' is set to 'Disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 5.2 | PATCH | Ensure 'Incognito mode availability' is set to 'Enabled: Incognito mode disabled'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : 5.3 | PATCH | Ensure 'Set disk cache size, in bytes' is set to 'Enabled: 250609664'] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the single-value policies] *********
+changed: [win11] => (item=AllowCrossOriginAuthPrompt)
+changed: [win11] => (item=SafeBrowsingProtectionLevel)
+changed: [win11] => (item=MediaRouterCastAllowAllIPs)
+changed: [win11] => (item=BrowserNetworkTimeQueriesEnabled)
+changed: [win11] => (item=AudioSandboxEnabled)
+changed: [win11] => (item=PromptForDownloadLocation)
+changed: [win11] => (item=BackgroundModeEnabled)
+changed: [win11] => (item=SafeSitesFilterBehavior)
+changed: [win11] => (item=ChromeVariations)
+changed: [win11] => (item=SavingBrowserHistoryDisabled)
+changed: [win11] => (item=DNSInterceptionChecksEnabled)
+changed: [win11] => (item=ComponentUpdatesEnabled)
+changed: [win11] => (item=GloballyScopeHTTPAuthCacheEnabled)
+changed: [win11] => (item=EnableOnlineRevocationChecks)
+changed: [win11] => (item=CommandLineFlagSecurityWarningsEnabled)
+changed: [win11] => (item=EnterpriseHardwarePlatformAPIEnabled)
+changed: [win11] => (item=ForceEphemeralProfiles)
+changed: [win11] => (item=ImportAutofillFormData)
+changed: [win11] => (item=ImportHomepage)
+changed: [win11] => (item=ImportSearchEngine)
+changed: [win11] => (item=SuppressUnsupportedOSWarning)
+changed: [win11] => (item=DefaultInsecureContentSetting)
+changed: [win11] => (item=DefaultWebBluetoothGuardSetting)
+changed: [win11] => (item=DefaultWebUsbGuardSetting)
+changed: [win11] => (item=DefaultNotificationsSetting)
+changed: [win11] => (item=BlockExternalExtensions)
+changed: [win11] => (item=ExtensionUnpublishedAvailability)
+changed: [win11] => (item=AuthSchemes)
+changed: [win11] => (item=PasswordManagerEnabled)
+changed: [win11] => (item=RemoteAccessHostAllowRemoteAccessConnections)
+changed: [win11] => (item=RemoteAccessHostAllowUiAccessForRemoteAssistance)
+changed: [win11] => (item=RemoteAccessHostRequireCurtain)
+changed: [win11] => (item=RemoteAccessHostFirewallTraversal)
+changed: [win11] => (item=RemoteAccessHostAllowClientPairing)
+changed: [win11] => (item=RemoteAccessHostAllowRelayedConnection)
+changed: [win11] => (item=CloudAPAuthEnabled)
+changed: [win11] => (item=DownloadRestrictions)
+changed: [win11] => (item=SSLErrorOverrideAllowed)
+changed: [win11] => (item=DisableSafeBrowsingProceedAnyway)
+changed: [win11] => (item=SitePerProcess)
+changed: [win11] => (item=ForceGoogleSafeSearch)
+changed: [win11] => (item=RelaunchNotification)
+changed: [win11] => (item=ProxyMode)
+changed: [win11] => (item=RequireOnlineRevocationChecksForLocalAnchors)
+changed: [win11] => (item=RelaunchNotificationPeriod)
+changed: [win11] => (item=AllowWebAuthnWithBrokenTlsCerts)
+changed: [win11] => (item=DomainReliabilityAllowed)
+changed: [win11] => (item=EncryptedClientHelloEnabled)
+changed: [win11] => (item=EnterpriseProfileCreationKeepBrowsingData)
+changed: [win11] => (item=GoogleSearchSidePanelEnabled)
+changed: [win11] => (item=HttpsUpgradesEnabled)
+changed: [win11] => (item=RendererAppContainerEnabled)
+changed: [win11] => (item=StrictMimetypeCheckForWorkerScriptsEnabled)
+changed: [win11] => (item=RemoteDebuggingAllowed)
+changed: [win11] => (item=DefaultCookiesSetting)
+changed: [win11] => (item=DefaultGeolocationSetting)
+changed: [win11] => (item=EnableMediaRouter)
+changed: [win11] => (item=PaymentMethodQueryEnabled)
+changed: [win11] => (item=BlockThirdPartyCookies)
+changed: [win11] => (item=BrowserSignin)
+changed: [win11] => (item=SyncDisabled)
+changed: [win11] => (item=AlternateErrorPagesEnabled)
+changed: [win11] => (item=AllowDeletingBrowserHistory)
+changed: [win11] => (item=NetworkPredictionOptions)
+changed: [win11] => (item=SpellCheckServiceEnabled)
+changed: [win11] => (item=MetricsReportingEnabled)
+changed: [win11] => (item=SafeBrowsingForTrustedSourcesEnabled)
+changed: [win11] => (item=SearchSuggestEnabled)
+changed: [win11] => (item=TranslateEnabled)
+changed: [win11] => (item=UrlKeyedAnonymizedDataCollectionEnabled)
+changed: [win11] => (item=ScreenCaptureAllowed)
+changed: [win11] => (item=DefaultSerialGuardSetting)
+changed: [win11] => (item=DefaultSensorsSetting)
+changed: [win11] => (item=DefaultClipboardSetting)
+changed: [win11] => (item=DefaultWindowManagementSetting)
+changed: [win11] => (item=AllowFileSelectionDialogs)
+changed: [win11] => (item=AudioCaptureAllowed)
+changed: [win11] => (item=VideoCaptureAllowed)
+changed: [win11] => (item=UserFeedbackAllowed)
+changed: [win11] => (item=AutofillAddressEnabled)
+changed: [win11] => (item=AutofillCreditCardEnabled)
+changed: [win11] => (item=ImportSavedPasswords)
+changed: [win11] => (item=BrowserGuestModeEnabled)
+changed: [win11] => (item=IncognitoModeAvailability)
+changed: [win11] => (item=DiskCacheSize)
+
+TASK [chrome_win_cis : POST | PATCH | Write the list policies] *****************
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=SafeBrowsingAllowlistDomains)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=CertificateTransparencyEnforcementDisabledForCas)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=CertificateTransparencyEnforcementDisabledForUrls)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=HSTSPolicyBypassList)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=OverrideSecurityRestrictionsOnInsecureOrigin)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=LookalikeWarningAllowlistDomains)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=WebRtcLocalIpsAllowedUrls)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=PdfLocalFileAccessAllowedForDomains)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=ExtensionAllowedTypes)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=ExtensionInstallBlocklist)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=NativeMessagingBlocklist)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=RemoteAccessHostClientDomainList)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=FileOrDirectoryPickerWithoutGestureAllowedForOrigins)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=HttpAllowlist)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=ClipboardAllowedForUrls)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=ClipboardBlockedForUrls)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=WindowManagementAllowedForUrls)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=WindowManagementBlockedForUrls)
+included: /home/frqadmin/ansible-cis/chrome_win_cis/tasks/post_list.yml for win11 => (item=SyncTypesListDisabled)
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of SafeBrowsingAllowlistDomains] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of SafeBrowsingAllowlistDomains] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in SafeBrowsingAllowlistDomains] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of CertificateTransparencyEnforcementDisabledForCas] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of CertificateTransparencyEnforcementDisabledForCas] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in CertificateTransparencyEnforcementDisabledForCas] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of CertificateTransparencyEnforcementDisabledForUrls] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of CertificateTransparencyEnforcementDisabledForUrls] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in CertificateTransparencyEnforcementDisabledForUrls] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of HSTSPolicyBypassList] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of HSTSPolicyBypassList] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in HSTSPolicyBypassList] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of OverrideSecurityRestrictionsOnInsecureOrigin] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of OverrideSecurityRestrictionsOnInsecureOrigin] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in OverrideSecurityRestrictionsOnInsecureOrigin] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of LookalikeWarningAllowlistDomains] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of LookalikeWarningAllowlistDomains] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in LookalikeWarningAllowlistDomains] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of WebRtcLocalIpsAllowedUrls] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of WebRtcLocalIpsAllowedUrls] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in WebRtcLocalIpsAllowedUrls] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of PdfLocalFileAccessAllowedForDomains] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of PdfLocalFileAccessAllowedForDomains] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in PdfLocalFileAccessAllowedForDomains] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of ExtensionAllowedTypes] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of ExtensionAllowedTypes] ***
+changed: [win11] => (item=extension)
+changed: [win11] => (item=hosted_app)
+changed: [win11] => (item=platform_app)
+changed: [win11] => (item=theme)
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in ExtensionAllowedTypes] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of ExtensionInstallBlocklist] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of ExtensionInstallBlocklist] ***
+changed: [win11] => (item=*)
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in ExtensionInstallBlocklist] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of NativeMessagingBlocklist] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of NativeMessagingBlocklist] ***
+changed: [win11] => (item=*)
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in NativeMessagingBlocklist] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of RemoteAccessHostClientDomainList] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of RemoteAccessHostClientDomainList] ***
+changed: [win11] => (item=lab.example.com)
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in RemoteAccessHostClientDomainList] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of FileOrDirectoryPickerWithoutGestureAllowedForOrigins] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of FileOrDirectoryPickerWithoutGestureAllowedForOrigins] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in FileOrDirectoryPickerWithoutGestureAllowedForOrigins] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of HttpAllowlist] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of HttpAllowlist] ********
+changed: [win11] => (item=intranet.lab.example.com)
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in HttpAllowlist] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of ClipboardAllowedForUrls] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of ClipboardAllowedForUrls] ***
+changed: [win11] => (item=https://app.lab.example.com)
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in ClipboardAllowedForUrls] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of ClipboardBlockedForUrls] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of ClipboardBlockedForUrls] ***
+changed: [win11] => (item=[*.]example.org)
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in ClipboardBlockedForUrls] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of WindowManagementAllowedForUrls] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of WindowManagementAllowedForUrls] ***
+changed: [win11] => (item=https://app.lab.example.com)
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in WindowManagementAllowedForUrls] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of WindowManagementBlockedForUrls] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of WindowManagementBlockedForUrls] ***
+changed: [win11] => (item=[*.]example.org)
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in WindowManagementBlockedForUrls] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Read the current items of SyncTypesListDisabled] ***
+ok: [win11]
+
+TASK [chrome_win_cis : POST | PATCH | Write the items of SyncTypesListDisabled] ***
+changed: [win11] => (item=passwords)
+
+TASK [chrome_win_cis : POST | PATCH | Remove items no longer in SyncTypesListDisabled] ***
+skipping: [win11]
+
+TASK [chrome_win_cis : POST | AUDIT | Report] **********************************
+ok: [win11] => {
+    "msg": {
+        "benchmark": "CIS Google Chrome Benchmark v3.0.0",
+        "chrome": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "levels": "Level 1 on, Level 2 on",
+        "policies_written": "104",
+        "policy_key": "HKLM:\\SOFTWARE\\Policies\\Google\\Chrome"
+    }
+}
+
+PLAY RECAP *********************************************************************
+win11                      : ok=164  changed=14   unreachable=0    failed=0    skipped=42   rescued=0    ignored=0   
+
